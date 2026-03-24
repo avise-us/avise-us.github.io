@@ -88,8 +88,12 @@
             color: var(--purple);
             text-decoration: none;
             letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         .brand span { color: var(--purple-dark); }
+        .brand-logo { width: 40px; height: 40px; flex-shrink: 0; }
 
         nav {
             display: flex;
@@ -322,24 +326,56 @@
             letter-spacing: 0.5px;
         }
 
-        /* Tag badge on image */
-        .tag-badge {
+        /* Tag badges on image — stacked top-left */
+        .badges {
             position: absolute;
             top: 12px;
             left: 12px;
             z-index: 10;
-            font-size: 0.62rem;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .tag-badge {
+            font-size: 0.6rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 4px 10px;
+            padding: 4px 9px;
             border-radius: 4px;
             line-height: 1;
+            display: inline-block;
+            width: fit-content;
         }
-        .tag-badge.new     { background: var(--purple); color: #fff; }
-        .tag-badge.box     { background: var(--green);  color: #fff; }
-        .tag-badge.nobox   { background: var(--amber);  color: #1a1a2e; }
-        .tag-badge.limited { background: var(--red);    color: #fff; }
+        .tag-badge.nuevo      { background: var(--purple); color: #fff; }
+        .tag-badge.casi-nuevo { background: #ff7043;       color: #fff; }
+        .tag-badge.caja       { background: var(--green);  color: #fff; }
+        .tag-badge.sin-caja   { background: var(--amber);  color: #1a1a2e; }
+        .tag-badge.llegapronto {
+            background: #0ea5e9;
+            color: #fff;
+            animation: pulse-badge 1.8s ease-in-out infinite;
+        }
+        @keyframes pulse-badge {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(14,165,233,0.6); }
+            50%       { box-shadow: 0 0 0 6px rgba(14,165,233,0); }
+        }
+
+        /* Price */
+        .product-price {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: var(--purple);
+            margin-bottom: 14px;
+            line-height: 1;
+        }
+        .product-price .currency {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--muted);
+            margin-right: 3px;
+        }
 
         /* Thumbnails */
         .thumbnails {
@@ -367,6 +403,95 @@
         }
         .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .thumb.active { border-color: var(--purple); opacity: 1; }
+
+        /* ── Zoom hint on carousel images ── */
+        .carousel { cursor: zoom-in; }
+        .carousel-slide img {
+            transition: transform 0.35s ease;
+        }
+        .carousel:hover .carousel-slide img {
+            transform: scale(1.04);
+        }
+
+        /* ── Lightbox ── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0,0,0,0.92);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .lightbox.open { display: flex; }
+
+        .lightbox-img {
+            max-width: 90vw;
+            max-height: 88vh;
+            object-fit: contain;
+            border-radius: 6px;
+            box-shadow: 0 8px 60px rgba(0,0,0,0.6);
+            animation: lbFadeIn 0.22s ease;
+            user-select: none;
+        }
+
+        @keyframes lbFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 18px;
+            right: 22px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
+        .lightbox-btn {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .lightbox-btn:hover { background: rgba(255,255,255,0.25); }
+        .lightbox-btn.lb-prev { left: 16px; }
+        .lightbox-btn.lb-next { right: 16px; }
+        .lightbox-btn.hidden  { display: none; }
+
+        .lightbox-counter {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.55);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
 
         /* ── Product Info ── */
         .product-info {
@@ -518,7 +643,10 @@
 <!-- Header -->
 <header>
     <div class="header-inner">
-        <a href="#" class="brand">AVISE<span>.</span></a>
+        <a href="#" class="brand">
+            <img src="logo.svg" alt="" class="brand-logo">
+            AVISE IMPORTACIONES<span>.</span>
+        </a>
         <nav>
             <a href="#" class="active">Inicio</a>
             <a href="#productos">Productos</a>
@@ -532,7 +660,7 @@
     <div class="hero-inner">
         <div class="hero-badge">Importaciones directas desde EE.UU.</div>
         <h1>Tecnología <em>original</em><br>a tu alcance.</h1>
-        <p>Los mejores smartphones y wearables importados directamente desde Estados Unidos. Garantía incluida en cada producto.</p>
+        <p>Escriba al WhatsApp +1 305 645 7858.</p>
         <a href="#productos" class="hero-cta">Ver productos →</a>
     </div>
 </div>
@@ -552,18 +680,30 @@
     <div class="eyebrow" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:4px;color:rgba(255,255,255,0.5);margin-bottom:16px;">Contacto directo</div>
     <h2>¿Te interesa algún producto?</h2>
     <p>Escríbenos o llámanos para consultar disponibilidad y precios.</p>
-    <a href="tel:+1234567890" class="phone-link">+1 (234) 567-890</a>
+    <a href="tel:+13056457858" class="phone-link">+1 (305) 645-7858</a>
 </section>
 
 <!-- Footer -->
 <footer>
-    <span class="brand-foot">AVISE.</span>
+    <span class="brand-foot" style="display:flex;align-items:center;gap:8px;">
+        <img src="logo.svg" alt="" style="width:28px;height:28px;">
+        AVISE.
+    </span>
     <span>&copy; 2026 &mdash; Solo productos originales</span>
     <span>Importaciones EE.UU. &middot; Garantía incluida</span>
 </footer>
 
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+    <button class="lightbox-close" id="lbClose" aria-label="Cerrar">&#x2715;</button>
+    <button class="lightbox-btn lb-prev hidden" id="lbPrev" aria-label="Anterior">&#8592;</button>
+    <img class="lightbox-img" id="lbImg" src="" alt="">
+    <button class="lightbox-btn lb-next hidden" id="lbNext" aria-label="Siguiente">&#8594;</button>
+    <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
 <!-- WhatsApp floating button -->
-<a href="https://wa.me/1234567890" class="whatsapp-btn" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+<a href="https://wa.me/13056457858" class="whatsapp-btn" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
         <path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.469 2.027 7.773L0 32l8.437-2.012A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 01-6.77-1.852l-.486-.288-5.01 1.196 1.218-4.874-.316-.5A13.269 13.269 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.26-9.926c-.397-.199-2.35-1.16-2.714-1.29-.364-.132-.629-.199-.894.199-.265.397-1.026 1.29-1.258 1.555-.232.265-.464.298-.861.1-.397-.199-1.675-.617-3.19-1.969-1.179-1.052-1.976-2.35-2.207-2.748-.231-.397-.025-.612.174-.81.178-.178.397-.464.596-.695.199-.232.265-.398.397-.663.132-.265.066-.497-.033-.696-.1-.199-.894-2.152-1.225-2.947-.322-.775-.648-.67-.894-.682-.232-.011-.497-.014-.763-.014-.265 0-.696.099-1.06.497-.364.397-1.39 1.358-1.39 3.311 0 1.953 1.423 3.84 1.622 4.105.199.265 2.8 4.274 6.785 5.993.948.41 1.688.654 2.265.837.952.302 1.818.26 2.502.158.763-.114 2.35-.96 2.682-1.887.331-.927.331-1.722.232-1.887-.099-.166-.364-.265-.762-.464z"/>
     </svg>
@@ -574,46 +714,82 @@
     // PRODUCTOS — edita este array para agregar o
     // modificar productos.
     //
-    // badgeType: "new" (morado) | "box" (verde) |
-    //            "nobox" (amarillo) | "limited" (rojo)
+    // condition: "nuevo" | "usado"
+    // packaging: "caja" | "sin-caja" | null  ← null para usados
+    // price: número en soles (S/.)  ← ACTUALIZA CON TU PRECIO REAL
     // ─────────────────────────────────────────────
     const products = [
         {
-            badge: "new",
-            badgeText: "Nueva llegada",
+            condition: "nuevo",
+            packaging: "caja",
+            price: 3599,
             name: "Samsung Galaxy Z Fold 4",
-            description: "Smartphone plegable con pantalla interior de 7.6\" QXGA+, Snapdragon 8+ Gen 1 y compatible con S Pen. Nuevo, sellado en su caja original — importado desde EE.UU.",
+            description: "Smartphone plegable con pantalla interior de 7.6\" QXGA+, Snapdragon 8+ Gen 1 y compatible con S Pen. Sellado en su caja original, importado desde EE.UU.",
             images: [
                 "products/samsung_zfold4.png",
                 "products/samsung_zfold4_1.png"
             ]
         },
         {
-            badge: "box",
-            badgeText: "En caja",
+            condition: "nuevo",
+            packaging: "caja",
+            price: 899,
             name: "Samsung Galaxy Watch 5",
-            description: "Smartwatch con GPS integrado, monitoreo cardíaco, oxígeno en sangre y análisis del sueño. Nuevo, sellado en su caja original — importado desde EE.UU.",
+            description: "Smartwatch con GPS integrado, monitoreo cardíaco, oxígeno en sangre y análisis del sueño. Sellado en su caja original, importado desde EE.UU.",
             images: [
                 "products/samsung_galaxy_watch_5.png"
             ]
         },
         {
-            badge: "new",
-            badgeText: "Nueva llegada",
+            condition: "nuevo",
+            packaging: "caja",
+            price: 3990,
             name: "iPhone 17 Negro",
-            description: "El último flagship de Apple: chip A19, cámara de 48 MP con ProRes, pantalla Super Retina XDR de 6.1\" y aluminio negro mate. Nuevo, sellado en su caja original — importado desde EE.UU.",
+            description: "El último flagship de Apple: chip A19, cámara de 48 MP con ProRes, pantalla Super Retina XDR de 6.1\" y aluminio negro mate. Sellado en su caja original, importado desde EE.UU.",
             images: [
                 "products/iphone17_black.png"
             ]
         },
         {
-            badge: "nobox",
-            badgeText: "Sin caja",
+            condition: "llegapronto",
+            packaging: null,
+            price: 6690,
+            name: "iPhone 17 Pro Max",
+            description: "El Pro Max más avanzado de Apple: chip A19 Pro con 12 GB RAM, pantalla ProMotion de 6.9\", cámara tetraprismática de 5x y acabado en titanio Cosmic Orange. Disponible en 512 GB y 1 TB. Disponible el próximo mes — importado desde EE.UU.",
+            images: [
+                "products/iphone_17_pro_max_llegapronto.png"
+            ]
+        },
+        {
+            condition: "nuevo",
+            packaging: "sin-caja",
+            price: 1799,
             name: "Apple Watch Series 10",
-            description: "El Apple Watch más delgado hasta la fecha. Pantalla OLED Always-On 40% mayor, detección de apnea del sueño y carga magnética ultrarrápida. Nuevo sin usar — no incluye caja original.",
+            description: "El Apple Watch más delgado hasta la fecha. Pantalla OLED Always-On 40% mayor, detección de apnea del sueño y carga magnética ultrarrápida. Nuevo sin usar, sin caja original.",
             images: [
                 "products/iwatch_s10_new_without_box.png",
                 "products/iwatch_s10_new_without_box_1.png"
+            ]
+        },
+        {
+            condition: "casi-nuevo",
+            packaging: "caja",
+            price: 3890,
+            name: "DJI Mavic 2 Pro",
+            description: "Drone profesional con cámara Hasselblad L-Format de 20 MP, apertura variable f/2.8–f/11, grabación 4K HDR y autonomía de 31 minutos. En excelente estado, incluye caja original.",
+            images: [
+                "products/mavic_2_pro_usado.png",
+                "products/mavic_2_pro_usado_1.png"
+            ]
+        },
+        {
+            condition: "nuevo",
+            packaging: "caja",
+            price: 840,
+            name: "GoPro Hero 7 Black",
+            description: "Cámara de acción con video 4K60 estabilizado (HyperSmooth), foto de 12 MP, resistente al agua hasta 10 m sin carcasa y control por voz. Sellado en su caja original, importado desde EE.UU.",
+            images: [
+                "products/gopro7_new.png"
             ]
         }
         // Agrega más productos aquí ↓
@@ -635,10 +811,31 @@
              </div>`
         ).join('');
 
+        const condLabels = { "nuevo": "Nuevo", "casi-nuevo": "Excelente Estado", "usado": "Usado", "llegapronto": "Próximo Mes" };
+        const condLabel  = condLabels[p.condition] || p.condition;
+        const isProximo  = p.condition === "llegapronto";
+
+        const packBadge  = (!isProximo && p.packaging)
+            ? `<span class="tag-badge ${p.packaging}">${p.packaging === "caja" ? "En caja" : "Sin caja"}</span>`
+            : '';
+
+        const priceHTML = `<div class="product-price"><span class="currency">S/.</span>${p.price.toLocaleString('es-PE')}</div>`;
+
+        const ctaHTML = isProximo
+            ? `<a href="https://wa.me/13056457858?text=Me%20interesa%20el%20${encodeURIComponent(p.name)}%2C%20av%C3%ADsame%20cuando%20llegue" class="product-cta" target="_blank" rel="noopener" style="background:#e0f2fe;color:#0ea5e9;">
+                    🔔 Me interesa
+               </a>`
+            : `<a href="https://wa.me/13056457858?text=Hola%2C%20me%20interesa%20el%20${encodeURIComponent(p.name)}" class="product-cta" target="_blank" rel="noopener">
+                    💬 Consultar
+               </a>`;
+
         return `
         <div class="product-card">
             <div class="carousel" data-count="${p.images.length}">
-                <span class="tag-badge ${p.badge}">${p.badgeText}</span>
+                <div class="badges">
+                    <span class="tag-badge ${p.condition}">${condLabel}</span>
+                    ${packBadge}
+                </div>
                 ${multi ? '<button class="carousel-btn prev" aria-label="Imagen anterior">&#8592;</button>' : ''}
                 <div class="carousel-track">${slides}</div>
                 ${multi ? `<div class="carousel-counter">1 / ${p.images.length}</div>` : ''}
@@ -648,9 +845,8 @@
             <div class="product-info">
                 <div class="product-name">${p.name}</div>
                 <p class="product-desc">${p.description}</p>
-                <a href="https://wa.me/1234567890?text=Hola%2C%20me%20interesa%20el%20${encodeURIComponent(p.name)}" class="product-cta" target="_blank" rel="noopener">
-                    💬 Consultar precio
-                </a>
+                ${priceHTML}
+                ${ctaHTML}
             </div>
         </div>`;
     }
@@ -691,6 +887,61 @@
         });
     });
 
+    // ─────────────────────────────────────────────
+    // Lightbox
+    // ─────────────────────────────────────────────
+    const lightbox  = document.getElementById('lightbox');
+    const lbImg     = document.getElementById('lbImg');
+    const lbPrev    = document.getElementById('lbPrev');
+    const lbNext    = document.getElementById('lbNext');
+    const lbCounter = document.getElementById('lbCounter');
+    let lbImages = [], lbCurrent = 0;
+
+    function lbOpen(images, startIdx) {
+        lbImages  = images;
+        lbCurrent = startIdx;
+        lbShow();
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function lbShow() {
+        lbImg.src = lbImages[lbCurrent];
+        const multi = lbImages.length > 1;
+        lbPrev.classList.toggle('hidden', !multi);
+        lbNext.classList.toggle('hidden', !multi);
+        lbCounter.textContent = multi ? `${lbCurrent + 1} / ${lbImages.length}` : '';
+    }
+
+    function lbClose() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+        lbImg.src = '';
+    }
+
+    lbPrev.addEventListener('click', e => { e.stopPropagation(); lbCurrent = (lbCurrent - 1 + lbImages.length) % lbImages.length; lbShow(); });
+    lbNext.addEventListener('click', e => { e.stopPropagation(); lbCurrent = (lbCurrent + 1) % lbImages.length; lbShow(); });
+    document.getElementById('lbClose').addEventListener('click', lbClose);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) lbClose(); });
+    document.addEventListener('keydown', e => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') lbClose();
+        if (e.key === 'ArrowLeft')  { lbCurrent = (lbCurrent - 1 + lbImages.length) % lbImages.length; lbShow(); }
+        if (e.key === 'ArrowRight') { lbCurrent = (lbCurrent + 1) % lbImages.length; lbShow(); }
+    });
+
+    // Attach click-to-open on all carousel images
+    document.querySelectorAll('.product-card').forEach((card, cardIdx) => {
+        const imgs = products[cardIdx].images;
+        card.querySelectorAll('.carousel-slide img').forEach((img, i) => {
+            img.addEventListener('click', e => {
+                e.stopPropagation();
+                lbOpen(imgs, i);
+            });
+        });
+    });
+
+    // ─────────────────────────────────────────────
     // Smooth scroll for nav links
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
