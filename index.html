@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Tech Imports | US Exclusives</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --card-bg: #161616;
+            --text: #ffffff;
+            --accent: #d4af37; /* Gold accent */
+            --secondary: #888888;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 80px 20px 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-bottom: 1px solid #222;
+        }
+
+        .product-info {
+            padding: 30px;
+        }
+
+        .tag {
+            color: var(--accent);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin: 0 0 10px;
+        }
+
+        .description {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-bar {
+            background: var(--text);
+            color: var(--bg);
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .phone-link {
+            display: inline-block;
+            font-size: 2rem;
+            color: var(--bg);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            border-bottom: 2px solid var(--bg);
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            color: #444;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .phone-link { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="subtitle">Curated US Imports</div>
+        <h1>Authentic Excellence.</h1>
+    </header>
+
+    <div class="container">
+        <div class="product-grid">
+            
+            <div class="product-card">
+                <img src="product1.jpg" alt="iPhone 17" class="product-image">
+                <div class="product-info">
+                    <span class="tag">New Arrival</span>
+                    <h2>iPhone 17</h2>
+                    <p class="description">The latest flagship from California. Imported directly with full international warranty support.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="product2.jpg" alt="Beats Rugged Case" class="product-image">
+                <div class="product-info">
+                    <span class="tag">Limited Edition</span>
+                    <h2>Beats Rugged Case</h2>
+                    <p class="description">MagSafe compatible. Designed for the iPhone 17 with premium texture and impact protection.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="product3.jpg" alt="Apple Watch Ultra" class="product-image">
+                <div class="product-info">
+                    <span class="tag">In Stock</span>
+                    <h2>Apple Watch Ultra 2</h2>
+                    <p class="description">Titanium case with Milanese Loop. The pinnacle of Apple's wearable engineering.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <section class="contact-bar">
+        <p>Interested in a purchase? Contact us directly for availability and pricing.</p>
+        <a href="tel:+1234567890" class="phone-link">+1 (234) 567-890</a>
+    </section>
+
+    <footer>
+        &copy; 2026 Premium Imports. Genuine Products Only.
+    </footer>
+
+</body>
+</html>
