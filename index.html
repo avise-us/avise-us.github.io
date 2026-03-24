@@ -744,7 +744,7 @@
             condition: "nuevo",
             packaging: "caja",
             price: 3990,
-            name: "iPhone 17 Negro",
+            name: "iPhone 17 Negro + Original Case",
             description: "El último flagship de Apple: chip A19, cámara de 48 MP con ProRes, pantalla Super Retina XDR de 6.1\" y aluminio negro mate. Sellado en su caja original, importado desde EE.UU.",
             images: [
                 "products/iphone17_black.png"
@@ -753,7 +753,7 @@
         {
             condition: "llegapronto",
             packaging: null,
-            price: 6690,
+            price: 6090,
             name: "iPhone 17 Pro Max",
             description: "El Pro Max más avanzado de Apple: chip A19 Pro con 12 GB RAM, pantalla ProMotion de 6.9\", cámara tetraprismática de 5x y acabado en titanio Cosmic Orange. Disponible en 512 GB y 1 TB. Disponible el próximo mes — importado desde EE.UU.",
             images: [
@@ -786,10 +786,50 @@
             condition: "nuevo",
             packaging: "caja",
             price: 840,
-            name: "GoPro Hero 7 Black",
+            name: "GoPro Hero 7",
             description: "Cámara de acción con video 4K60 estabilizado (HyperSmooth), foto de 12 MP, resistente al agua hasta 10 m sin carcasa y control por voz. Sellado en su caja original, importado desde EE.UU.",
             images: [
                 "products/gopro7_new.png"
+            ]
+        },
+        {
+            condition: "nuevo",
+            packaging: "caja",
+            price: 999,
+            name: "iPad 8va Generación 32 GB",
+            description: "iPad con pantalla Retina de 10.2\", chip A12 Bionic, 32 GB de almacenamiento y compatibilidad con Apple Pencil y Smart Keyboard. Sellado en su caja original, importado desde EE.UU.",
+            images: [
+                "products/ipad_8va_generation_32GB_10.2inch_new.png"
+            ]
+        },
+        {
+            condition: "casi-nuevo",
+            packaging: "sin-caja",
+            price: 1899,
+            name: "MacBook Pro Core i5 13\"",
+            description: "MacBook Pro con procesador Intel Core i5, 8 GB RAM, 128 GB SSD y pantalla Retina de 13 pulgadas. Rendimiento fluido para trabajo y creatividad. Viene sin caja, importado desde EE.UU.",
+            images: [
+                "products/macbook_corei5_128GB_8GBram_13inches.png"
+            ]
+        },
+        {
+            condition: "nuevo",
+            packaging: "caja",
+            price: 499,
+            name: "Calculadora Gráfica Casio con Python",
+            description: "Calculadora gráfica Casio con soporte nativo para Python, ideal para matemáticas, ingeniería y programación. Pantalla de alta resolución, funciones estadísticas avanzadas y compatible con exámenes internacionales. Sellado en su caja original, importado desde EE.UU.",
+            images: [
+                "products/Calculadora_grafica_casio_con_python.png"
+            ]
+        },
+        {
+            condition: "llegapronto",
+            packaging: "sin-caja",
+            price: 3590,
+            name: "iPhone 16 Pro 256 GB",
+            description: "iPhone 16 Pro con chip A18 Pro, pantalla Super Retina XDR de 6.3\", sistema de cámara Pro con zoom óptico 5x y grabación 4K120. 256 GB de almacenamiento. En excelente estado, sin caja original. Disponible el próximo mes — importado desde EE.UU.",
+            images: [
+                "products/iphone16_pro_sincaja_llegapronto_256GB_excellente_estado.png"
             ]
         }
         // Agrega más productos aquí ↓
@@ -815,7 +855,7 @@
         const condLabel  = condLabels[p.condition] || p.condition;
         const isProximo  = p.condition === "llegapronto";
 
-        const packBadge  = (!isProximo && p.packaging)
+        const packBadge  = p.packaging
             ? `<span class="tag-badge ${p.packaging}">${p.packaging === "caja" ? "En caja" : "Sin caja"}</span>`
             : '';
 
@@ -826,7 +866,7 @@
                     🔔 Me interesa
                </a>`
             : `<a href="https://wa.me/13056457858?text=Hola%2C%20me%20interesa%20el%20${encodeURIComponent(p.name)}" class="product-cta" target="_blank" rel="noopener">
-                    💬 Consultar
+                    🛒 ¡Comprar ahora!
                </a>`;
 
         return `
