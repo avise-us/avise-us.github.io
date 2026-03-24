@@ -1,180 +1,704 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Tech Imports | US Exclusives</title>
+    <title>AVISE | Importaciones desde EE.UU.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0a0a0a;
-            --card-bg: #161616;
-            --text: #ffffff;
-            --accent: #d4af37; /* Gold accent */
-            --secondary: #888888;
+            --purple:       #673de6;
+            --purple-dark:  #5025d1;
+            --purple-light: #ebe4ff;
+            --purple-mid:   #d5dfff;
+            --bg:           #f4f4f8;
+            --card:         #ffffff;
+            --text:         #1a1a2e;
+            --muted:        #666680;
+            --border:       #e4e4f0;
+            --red:          #fc5185;
+            --green:        #00b090;
+            --amber:        #ffcd35;
+            --shadow:       0 2px 16px rgba(103,61,230,0.10);
+            --shadow-hover: 0 8px 32px rgba(103,61,230,0.18);
         }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            background-color: var(--bg);
+            background: var(--bg);
             color: var(--text);
             font-family: 'Inter', sans-serif;
-            margin: 0;
-            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* ── Top bar ── */
+        .topbar {
+            background: var(--purple-dark);
+            color: #fff;
+            font-size: 0.72rem;
+            letter-spacing: 0.5px;
+            padding: 8px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .topbar-left { opacity: 0.85; }
+
+        .topbar-socials {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .topbar-socials a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 0.75rem;
+            transition: color 0.2s;
+        }
+        .topbar-socials a:hover { color: #fff; }
+
+        /* ── Header ── */
         header {
-            padding: 80px 20px 40px;
-            text-align: center;
+            background: #fff;
+            border-bottom: 2px solid var(--purple-light);
+            padding: 0 40px;
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            box-shadow: 0 2px 12px rgba(103,61,230,0.07);
         }
 
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            letter-spacing: -1px;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            color: var(--secondary);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.8rem;
-        }
-
-        .container {
-            max-width: 1100px;
+        .header-inner {
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 40px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
         }
 
+        .brand {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--purple);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+        .brand span { color: var(--purple-dark); }
+
+        nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        nav a {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.2s;
+            padding-bottom: 2px;
+            border-bottom: 2px solid transparent;
+        }
+        nav a:hover,
+        nav a.active {
+            color: var(--purple);
+            border-bottom-color: var(--purple);
+        }
+
+        /* ── Hero ── */
+        .hero {
+            background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 60%, #9b72f5 100%);
+            padding: 70px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-inner {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.25);
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--amber);
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            color: var(--purple);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+        }
+
+        /* ── Products section ── */
+        .section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .section-head {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 40px;
+        }
+
+        .section-head h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--text);
+        }
+
+        .section-line {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, var(--purple-light), transparent);
+            border-radius: 2px;
+        }
+
+        .section-label-pill {
+            background: var(--purple-light);
+            color: var(--purple);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* ── Product Grid ── */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
         }
 
+        /* ── Product Card ── */
         .product-card {
-            background: var(--card-bg);
-            border-radius: 4px;
+            background: var(--card);
+            border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            box-shadow: var(--shadow);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border: 1px solid var(--border);
         }
-
         .product-card:hover {
             transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
 
-        .product-image {
+        /* ── Carousel ── */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+            background: var(--purple-light);
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.42s cubic-bezier(0.25,0.46,0.45,0.94);
+            will-change: transform;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide img {
             width: 100%;
-            height: 400px;
+            height: 100%;
             object-fit: cover;
-            border-bottom: 1px solid #222;
-        }
-
-        .product-info {
-            padding: 30px;
-        }
-
-        .tag {
-            color: var(--accent);
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 10px;
             display: block;
+            user-select: none;
+            -webkit-user-drag: none;
         }
 
-        h2 {
-            font-size: 1.4rem;
-            margin: 0 0 10px;
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.9);
+            color: var(--purple);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.2s, box-shadow 0.2s;
+            z-index: 10;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+        .carousel:hover .carousel-btn { opacity: 1; }
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+
+        .carousel-counter {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(103,61,230,0.75);
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 500;
+            padding: 3px 9px;
+            border-radius: 20px;
+            z-index: 10;
+            pointer-events: none;
+            letter-spacing: 0.5px;
         }
 
-        .description {
-            color: var(--secondary);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
+        /* Tag badge on image */
+        .tag-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 10;
+            font-size: 0.62rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            line-height: 1;
+        }
+        .tag-badge.new     { background: var(--purple); color: #fff; }
+        .tag-badge.box     { background: var(--green);  color: #fff; }
+        .tag-badge.nobox   { background: var(--amber);  color: #1a1a2e; }
+        .tag-badge.limited { background: var(--red);    color: #fff; }
+
+        /* Thumbnails */
+        .thumbnails {
+            display: flex;
+            gap: 4px;
+            padding: 8px 10px;
+            background: #fafafa;
+            border-top: 1px solid var(--border);
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .thumbnails::-webkit-scrollbar { display: none; }
+        .thumbnails.hidden { display: none; }
+
+        .thumb {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: border-color 0.2s, opacity 0.2s;
+            opacity: 0.5;
+        }
+        .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .thumb.active { border-color: var(--purple); opacity: 1; }
+
+        /* ── Product Info ── */
+        .product-info {
+            padding: 20px 20px 22px;
         }
 
-        .contact-bar {
-            background: var(--text);
-            color: var(--bg);
-            padding: 60px 20px;
+        .product-name {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1.25;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .product-desc {
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.65;
+            margin-bottom: 16px;
+        }
+
+        .product-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--purple-light);
+            color: var(--purple);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            padding: 9px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .product-cta:hover { background: var(--purple); color: #fff; }
+
+        /* ── WhatsApp floating button ── */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+            text-decoration: none;
+            z-index: 999;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 28px rgba(37,211,102,0.55);
+        }
+        .whatsapp-btn svg { width: 30px; height: 30px; fill: #fff; }
+
+        /* ── Contact strip ── */
+        .contact-strip {
+            background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+            padding: 70px 40px;
             text-align: center;
-            margin-top: 80px;
+        }
+
+        .contact-strip h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .contact-strip p {
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
         }
 
         .phone-link {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Rajdhani', sans-serif;
             font-size: 2rem;
-            color: var(--bg);
+            font-weight: 700;
+            color: #fff;
             text-decoration: none;
-            font-weight: 600;
-            margin-top: 20px;
-            border-bottom: 2px solid var(--bg);
+            letter-spacing: 1px;
+            border-bottom: 3px solid var(--amber);
+            padding-bottom: 4px;
+            transition: color 0.2s;
         }
+        .phone-link:hover { color: var(--amber); }
 
+        /* ── Footer ── */
         footer {
-            padding: 40px;
-            text-align: center;
-            color: #444;
-            font-size: 0.8rem;
+            background: #0f0f1a;
+            padding: 36px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #555570;
+            font-size: 0.78rem;
         }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
-            .phone-link { font-size: 1.5rem; }
+        footer .brand-foot {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--purple);
+            letter-spacing: 2px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .topbar { padding: 8px 20px; }
+            header { padding: 0 20px; }
+            nav { display: none; }
+            .hero { padding: 50px 20px; }
+            .section { padding: 40px 20px; }
+            .product-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+            .contact-strip { padding: 50px 20px; }
+            footer { flex-direction: column; gap: 10px; text-align: center; padding: 28px 20px; }
+            .carousel-btn { opacity: 1; }
+            .whatsapp-btn { bottom: 18px; right: 18px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="subtitle">Curated US Imports</div>
-        <h1>Authentic Excellence.</h1>
-    </header>
-
-    <div class="container">
-        <div class="product-grid">
-            
-            <div class="product-card">
-                <img src="product1.jpg" alt="iPhone 17" class="product-image">
-                <div class="product-info">
-                    <span class="tag">New Arrival</span>
-                    <h2>iPhone 17</h2>
-                    <p class="description">The latest flagship from California. Imported directly with full international warranty support.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="product2.jpg" alt="Beats Rugged Case" class="product-image">
-                <div class="product-info">
-                    <span class="tag">Limited Edition</span>
-                    <h2>Beats Rugged Case</h2>
-                    <p class="description">MagSafe compatible. Designed for the iPhone 17 with premium texture and impact protection.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="product3.jpg" alt="Apple Watch Ultra" class="product-image">
-                <div class="product-info">
-                    <span class="tag">In Stock</span>
-                    <h2>Apple Watch Ultra 2</h2>
-                    <p class="description">Titanium case with Milanese Loop. The pinnacle of Apple's wearable engineering.</p>
-                </div>
-            </div>
-
-        </div>
+<!-- Top bar -->
+<div class="topbar">
+    <span class="topbar-left">📦 Envíos disponibles &nbsp;·&nbsp; Productos 100% originales de EE.UU.</span>
+    <div class="topbar-socials">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">WhatsApp</a>
     </div>
+</div>
 
-    <section class="contact-bar">
-        <p>Interested in a purchase? Contact us directly for availability and pricing.</p>
-        <a href="tel:+1234567890" class="phone-link">+1 (234) 567-890</a>
-    </section>
+<!-- Header -->
+<header>
+    <div class="header-inner">
+        <a href="#" class="brand">AVISE<span>.</span></a>
+        <nav>
+            <a href="#" class="active">Inicio</a>
+            <a href="#productos">Productos</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </div>
+</header>
 
-    <footer>
-        &copy; 2026 Premium Imports. Genuine Products Only.
-    </footer>
+<!-- Hero -->
+<div class="hero">
+    <div class="hero-inner">
+        <div class="hero-badge">Importaciones directas desde EE.UU.</div>
+        <h1>Tecnología <em>original</em><br>a tu alcance.</h1>
+        <p>Los mejores smartphones y wearables importados directamente desde Estados Unidos. Garantía incluida en cada producto.</p>
+        <a href="#productos" class="hero-cta">Ver productos →</a>
+    </div>
+</div>
+
+<!-- Products -->
+<div class="section" id="productos">
+    <div class="section-head">
+        <div class="section-label-pill">Disponible ahora</div>
+        <h2>Nuestros productos</h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="product-grid" id="grid"></div>
+</div>
+
+<!-- Contact -->
+<section class="contact-strip" id="contacto">
+    <div class="eyebrow" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:4px;color:rgba(255,255,255,0.5);margin-bottom:16px;">Contacto directo</div>
+    <h2>¿Te interesa algún producto?</h2>
+    <p>Escríbenos o llámanos para consultar disponibilidad y precios.</p>
+    <a href="tel:+1234567890" class="phone-link">+1 (234) 567-890</a>
+</section>
+
+<!-- Footer -->
+<footer>
+    <span class="brand-foot">AVISE.</span>
+    <span>&copy; 2026 &mdash; Solo productos originales</span>
+    <span>Importaciones EE.UU. &middot; Garantía incluida</span>
+</footer>
+
+<!-- WhatsApp floating button -->
+<a href="https://wa.me/1234567890" class="whatsapp-btn" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.469 2.027 7.773L0 32l8.437-2.012A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 01-6.77-1.852l-.486-.288-5.01 1.196 1.218-4.874-.316-.5A13.269 13.269 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.26-9.926c-.397-.199-2.35-1.16-2.714-1.29-.364-.132-.629-.199-.894.199-.265.397-1.026 1.29-1.258 1.555-.232.265-.464.298-.861.1-.397-.199-1.675-.617-3.19-1.969-1.179-1.052-1.976-2.35-2.207-2.748-.231-.397-.025-.612.174-.81.178-.178.397-.464.596-.695.199-.232.265-.398.397-.663.132-.265.066-.497-.033-.696-.1-.199-.894-2.152-1.225-2.947-.322-.775-.648-.67-.894-.682-.232-.011-.497-.014-.763-.014-.265 0-.696.099-1.06.497-.364.397-1.39 1.358-1.39 3.311 0 1.953 1.423 3.84 1.622 4.105.199.265 2.8 4.274 6.785 5.993.948.41 1.688.654 2.265.837.952.302 1.818.26 2.502.158.763-.114 2.35-.96 2.682-1.887.331-.927.331-1.722.232-1.887-.099-.166-.364-.265-.762-.464z"/>
+    </svg>
+</a>
+
+<script>
+    // ─────────────────────────────────────────────
+    // PRODUCTOS — edita este array para agregar o
+    // modificar productos.
+    //
+    // badgeType: "new" (morado) | "box" (verde) |
+    //            "nobox" (amarillo) | "limited" (rojo)
+    // ─────────────────────────────────────────────
+    const products = [
+        {
+            badge: "new",
+            badgeText: "Nueva llegada",
+            name: "Samsung Galaxy Z Fold 4",
+            description: "Smartphone plegable con pantalla interior de 7.6\" QXGA+, Snapdragon 8+ Gen 1 y compatible con S Pen. Nuevo, sellado en su caja original — importado desde EE.UU.",
+            images: [
+                "products/samsung_zfold4.png",
+                "products/samsung_zfold4_1.png"
+            ]
+        },
+        {
+            badge: "box",
+            badgeText: "En caja",
+            name: "Samsung Galaxy Watch 5",
+            description: "Smartwatch con GPS integrado, monitoreo cardíaco, oxígeno en sangre y análisis del sueño. Nuevo, sellado en su caja original — importado desde EE.UU.",
+            images: [
+                "products/samsung_galaxy_watch_5.png"
+            ]
+        },
+        {
+            badge: "new",
+            badgeText: "Nueva llegada",
+            name: "iPhone 17 Negro",
+            description: "El último flagship de Apple: chip A19, cámara de 48 MP con ProRes, pantalla Super Retina XDR de 6.1\" y aluminio negro mate. Nuevo, sellado en su caja original — importado desde EE.UU.",
+            images: [
+                "products/iphone17_black.png"
+            ]
+        },
+        {
+            badge: "nobox",
+            badgeText: "Sin caja",
+            name: "Apple Watch Series 10",
+            description: "El Apple Watch más delgado hasta la fecha. Pantalla OLED Always-On 40% mayor, detección de apnea del sueño y carga magnética ultrarrápida. Nuevo sin usar — no incluye caja original.",
+            images: [
+                "products/iwatch_s10_new_without_box.png",
+                "products/iwatch_s10_new_without_box_1.png"
+            ]
+        }
+        // Agrega más productos aquí ↓
+    ];
+
+    // ─────────────────────────────────────────────
+    // Render
+    // ─────────────────────────────────────────────
+    function buildCard(p) {
+        const multi = p.images.length > 1;
+
+        const slides = p.images.map(src =>
+            `<div class="carousel-slide"><img src="${src}" alt="${p.name}" loading="lazy" draggable="false"></div>`
+        ).join('');
+
+        const thumbsHTML = p.images.map((src, i) =>
+            `<div class="thumb${i === 0 ? ' active' : ''}" data-idx="${i}">
+                <img src="${src}" alt="" draggable="false">
+             </div>`
+        ).join('');
+
+        return `
+        <div class="product-card">
+            <div class="carousel" data-count="${p.images.length}">
+                <span class="tag-badge ${p.badge}">${p.badgeText}</span>
+                ${multi ? '<button class="carousel-btn prev" aria-label="Imagen anterior">&#8592;</button>' : ''}
+                <div class="carousel-track">${slides}</div>
+                ${multi ? `<div class="carousel-counter">1 / ${p.images.length}</div>` : ''}
+                ${multi ? '<button class="carousel-btn next" aria-label="Imagen siguiente">&#8594;</button>' : ''}
+            </div>
+            <div class="thumbnails ${multi ? '' : 'hidden'}">${thumbsHTML}</div>
+            <div class="product-info">
+                <div class="product-name">${p.name}</div>
+                <p class="product-desc">${p.description}</p>
+                <a href="https://wa.me/1234567890?text=Hola%2C%20me%20interesa%20el%20${encodeURIComponent(p.name)}" class="product-cta" target="_blank" rel="noopener">
+                    💬 Consultar precio
+                </a>
+            </div>
+        </div>`;
+    }
+
+    document.getElementById('grid').innerHTML = products.map(buildCard).join('');
+
+    // ─────────────────────────────────────────────
+    // Carousel logic
+    // ─────────────────────────────────────────────
+    document.querySelectorAll('.product-card').forEach(card => {
+        const carousel = card.querySelector('.carousel');
+        const track    = carousel.querySelector('.carousel-track');
+        const count    = parseInt(carousel.dataset.count);
+        if (count <= 1) return;
+
+        const counter = carousel.querySelector('.carousel-counter');
+        const thumbs  = card.querySelectorAll('.thumb');
+        let current   = 0;
+
+        function goTo(idx) {
+            current = ((idx % count) + count) % count;
+            track.style.transform = `translateX(-${current * 100}%)`;
+            thumbs.forEach((t, i) => t.classList.toggle('active', i === current));
+            if (counter) counter.textContent = `${current + 1} / ${count}`;
+            thumbs[current]?.scrollIntoView({ inline: 'center', behavior: 'smooth', block: 'nearest' });
+        }
+
+        carousel.querySelector('.prev').addEventListener('click', () => goTo(current - 1));
+        carousel.querySelector('.next').addEventListener('click', () => goTo(current + 1));
+        thumbs.forEach(t => t.addEventListener('click', () => goTo(+t.dataset.idx)));
+
+        // Swipe
+        let startX = 0;
+        carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+        carousel.addEventListener('touchend', e => {
+            const delta = startX - e.changedTouches[0].clientX;
+            if (Math.abs(delta) > 40) goTo(delta > 0 ? current + 1 : current - 1);
+        });
+    });
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+        });
+    });
+</script>
 
 </body>
 </html>
